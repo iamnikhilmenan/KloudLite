@@ -5,24 +5,21 @@
  * @format
  */
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+// course list api: https://learn-api.kodekloud.com/api/courses?page=1
+// course API: https://learn.kodekloud.com/_next/data/i8qafWF9y6ItcdlLVRaPC/en/courses/crash-course-linux-for-absolute-beginners.json?courseSlug=crash-course-linux-for-absolute-beginners
+// https://learn-api.kodekloud.com/api/learning_paths
+
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import axios from 'axios';
+import { useEffect } from 'react';
+import AppStackNavigator from './src/navigation/AppStackNavigator';
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NewAppScreen templateFileName="App.tsx" />
-    </View>
+    <SafeAreaProvider>
+      <AppStackNavigator />
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
